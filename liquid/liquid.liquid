@@ -1,0 +1,24 @@
+{%assign products=collections['dining-chairs'].products%}
+<section class="product-grid">
+{%for product in products%}
+<article class="product-card">
+<a href="{{product.url}}">
+<img src="{{product.featured_image|image_url: width: 400}}" alt="{{product.title}}">
+<h2> {{product.title|escape}}</h2>
+<p>{{product.price|money}}</p>
+</a>
+{%if product.compare_at_price>product.price%}
+    <span class="badge sale">On Sale!</span>
+{%endif%}
+{%if product.tags contains 'new'%}
+<span class="badge new">New Arrival</span>
+{%endif%}
+</article>
+{%else%}
+<p>No products found in this collection.</p>
+{%endfor%}
+</section>
+{%comment%}
+This is a test comment block for formatting.
+            Check how your formatter handles it.
+{%endcomment%}
